@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 
 import net.wtako.WTAKOUtils.Commands.CommandWut;
 import net.wtako.WTAKOUtils.EventHandlers.PistonListener;
+import net.wtako.WTAKOUtils.EventHandlers.PlayerDeathListener;
 import net.wtako.WTAKOUtils.Utils.Lang;
 
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -18,7 +19,7 @@ public final class Main extends JavaPlugin {
     private static Main             instance;
     public static YamlConfiguration LANG;
     public static File              LANG_FILE;
-    public static Logger            log = Logger.getLogger("FactionWTAKO");
+    public static Logger            log = Logger.getLogger("WTAKOUtils");
 
     @Override
     public void onEnable() {
@@ -27,6 +28,7 @@ public final class Main extends JavaPlugin {
         getConfig().options().copyDefaults(true);
         getCommand(getProperty("mainCommand")).setExecutor(new CommandWut());
         getServer().getPluginManager().registerEvents(new PistonListener(), this);
+        getServer().getPluginManager().registerEvents(new PlayerDeathListener(), this);
         loadLang();
     }
 
@@ -95,6 +97,14 @@ public final class Main extends JavaPlugin {
 
     public static Main getInstance() {
         return Main.instance;
+    }
+
+    public static String getHumanTranslation(String key) {
+        final String resultString = Main.getInstance().getConfig().getString("Translation." + key);
+        if (resultString == null || resultString.length() == 0) {
+            return key;
+        }
+        return resultString;
     }
 
 }

@@ -6,11 +6,13 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>WTAKOUtils</name>
     <description>A customization plugin for WTAKO SERVER.</description>
+    <url>https://gitlab.wtako.net/Saren/wtakoutils</url>
 
     <properties>
         <author>Saren</author>
         <mainClass>Main</mainClass>
         <mainCommand>wut</mainCommand>
+        
     </properties>
 
     <repositories>

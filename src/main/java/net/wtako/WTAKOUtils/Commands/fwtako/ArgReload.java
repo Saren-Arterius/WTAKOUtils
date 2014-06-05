@@ -12,7 +12,6 @@ public class ArgReload {
             sender.sendMessage(Lang.NO_PERMISSION_COMMAND.toString());
             return;
         }
-
         Main.getInstance().getServer().getPluginManager().disablePlugin(Main.getInstance());
         Main.getInstance().getServer().getPluginManager().enablePlugin(Main.getInstance());
         Main.getInstance().reloadConfig();
