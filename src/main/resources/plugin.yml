@@ -28,3 +28,6 @@ permissions:
     ${artifactId}.reload:
         description: Reloads the plugin.
         default: op
+    ${artifactId}.use:
+        description: Reloads the plugin.
+        default: true

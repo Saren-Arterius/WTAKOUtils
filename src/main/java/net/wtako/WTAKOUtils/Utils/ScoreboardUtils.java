@@ -35,10 +35,13 @@ public class ScoreboardUtils {
 
         final String[] messageArray = message.split("%lb%");
         int currentScore = messageArray.length;
-
         for (final String item: messageArray) {
-            final Score score = objective.getScore(Main.getInstance().getServer()
-                    .getOfflinePlayer(item.substring(0, item.length() > 16 ? 15 : item.length())));
+            final Score score = objective.getScore(Main
+                    .getInstance()
+                    .getServer()
+                    .getOfflinePlayer(
+                            item.equalsIgnoreCase("") ? StringUtils.toInvisible(String.valueOf(currentScore)) : item
+                                    .substring(0, item.length() > 16 ? 15 : item.length())));
             score.setScore(currentScore);
             currentScore--;
         }

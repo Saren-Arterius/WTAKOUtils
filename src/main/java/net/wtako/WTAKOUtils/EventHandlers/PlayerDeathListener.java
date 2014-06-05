@@ -13,6 +13,7 @@ import net.wtako.WTAKOUtils.Utils.ScoreboardUtils;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 
@@ -31,6 +32,7 @@ public class PlayerDeathListener implements Listener {
         }
         PlayerDeathListener.playerDeathTimes.put(victim.getUniqueId(), System.currentTimeMillis());
         final String deathMessage = PlayerDeathListener.getDeathScoreboardMessage(victim);
+
         ScoreboardUtils.showScoreboardMessage(Lang.DEATH_INFO_TITLE.toString(), deathMessage,
                 Lang.DEATH_INFO_DELIMITER.toString(), victim,
                 Main.getInstance().getConfig().getLong("DeathInfo.DelayTicks"),
@@ -65,16 +67,21 @@ public class PlayerDeathListener implements Listener {
                 victim.getLocation().getBlockY(), victim.getLocation().getBlockZ())
                 + Lang.DEATH_INFO_DELIMITER.toString();
         String killerMsg = "";
-        if (victim.getKiller() instanceof Player) {
+        if (victim.getKiller() != null && victim.getKiller() instanceof Player) {
             killerMsg = Lang.DEATH_INFO_KILLER.toString() + ": " + victim.getKiller().getName()
                     + Lang.DEATH_INFO_DELIMITER.toString();
+        } else if (victim.getLastDamageCause() instanceof EntityDamageByEntityEvent) {
+            killerMsg = Lang.DEATH_INFO_KILLER.toString()
+                    + ": "
+                    + Main.getHumanTranslation(((EntityDamageByEntityEvent) victim.getLastDamageCause()).getDamager()
+                            .getType().name()) + Lang.DEATH_INFO_DELIMITER.toString();
         }
         final Date deathDate = new Date();
         deathDate.setTime(PlayerDeathListener.playerDeathTimes.get(victim.getUniqueId()));
         final String timeMsg = Lang.DEATH_INFO_TIME.toString() + ": "
                 + new SimpleDateFormat("HH:mm:ss").format(deathDate) + Lang.DEATH_INFO_DELIMITER.toString();
         String causeMsg;
-        if (victim.getLastDamageCause().getCause().name() != null) {
+        if (victim.getLastDamageCause() != null) {
             causeMsg = Lang.DEATH_INFO_CAUSE.toString() + ": "
                     + Main.getHumanTranslation(victim.getLastDamageCause().getCause().name())
                     + Lang.DEATH_INFO_DELIMITER.toString();
