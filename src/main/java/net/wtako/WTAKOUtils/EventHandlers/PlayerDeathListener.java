@@ -38,7 +38,7 @@ public class PlayerDeathListener implements Listener {
                 Main.getInstance().getConfig().getLong("DeathInfo.DelayTicks"),
                 Main.getInstance().getConfig().getLong("DeathInfo.ShowTicks"));
     }
-
+    
     @EventHandler
     public static void onPlayerRespawn(final PlayerRespawnEvent event) {
         if (!Main.getInstance().getConfig().getBoolean("DeathInfo.Show")) {
