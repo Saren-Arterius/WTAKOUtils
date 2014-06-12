@@ -8,7 +8,6 @@ import java.util.logging.Logger;
 
 import net.wtako.WTAKOUtils.Commands.CommandWut;
 import net.wtako.WTAKOUtils.EventHandlers.PistonListener;
-import net.wtako.WTAKOUtils.EventHandlers.PlayerDeathListener;
 import net.wtako.WTAKOUtils.Utils.Lang;
 
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -28,7 +27,6 @@ public final class Main extends JavaPlugin {
         getConfig().options().copyDefaults(true);
         getCommand(getProperty("mainCommand")).setExecutor(new CommandWut());
         getServer().getPluginManager().registerEvents(new PistonListener(), this);
-        getServer().getPluginManager().registerEvents(new PlayerDeathListener(), this);
         loadLang();
     }
 

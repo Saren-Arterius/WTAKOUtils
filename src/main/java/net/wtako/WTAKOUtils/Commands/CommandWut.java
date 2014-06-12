@@ -1,9 +1,7 @@
 package net.wtako.WTAKOUtils.Commands;
 
 import net.wtako.WTAKOUtils.Commands.fwtako.ArgHelp;
-import net.wtako.WTAKOUtils.Commands.fwtako.ArgOff;
 import net.wtako.WTAKOUtils.Commands.fwtako.ArgReload;
-import net.wtako.WTAKOUtils.Commands.fwtako.ArgTSh;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -19,12 +17,6 @@ public class CommandWut implements CommandExecutor {
                 return true;
             } else if (args[0].equalsIgnoreCase("reload")) {
                 new ArgReload(sender);
-                return true;
-            } else if (args[0].equalsIgnoreCase("tsh")) {
-                new ArgTSh(sender);
-                return true;
-            } else if (args[0].equalsIgnoreCase("off")) {
-                new ArgOff(sender);
                 return true;
             }
         }
