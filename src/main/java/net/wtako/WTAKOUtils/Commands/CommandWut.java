@@ -1,7 +1,7 @@
 package net.wtako.WTAKOUtils.Commands;
 
-import net.wtako.WTAKOUtils.Commands.fwtako.ArgHelp;
-import net.wtako.WTAKOUtils.Commands.fwtako.ArgReload;
+import net.wtako.WTAKOUtils.Commands.Wut.ArgHelp;
+import net.wtako.WTAKOUtils.Commands.Wut.ArgReload;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

@@ -1,4 +1,4 @@
-package net.wtako.WTAKOUtils.Commands.fwtako;
+package net.wtako.WTAKOUtils.Commands.Wut;
 
 import net.wtako.WTAKOUtils.Main;
 import net.wtako.WTAKOUtils.Utils.Lang;
