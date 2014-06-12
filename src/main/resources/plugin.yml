@@ -6,7 +6,6 @@ author: ${author}
 website: ${url}
  
 main: ${groupId}.${artifactId}.${mainClass}
-database: true
 mainCommand: ${mainCommand}
 
 commands:
