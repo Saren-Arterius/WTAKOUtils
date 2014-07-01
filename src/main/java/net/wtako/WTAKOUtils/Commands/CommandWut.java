@@ -1,6 +1,9 @@
 package net.wtako.WTAKOUtils.Commands;
 
+import net.wtako.WTAKOUtils.Commands.Wut.ArgAmountsOfEntities;
+import net.wtako.WTAKOUtils.Commands.Wut.ArgCountEntity;
 import net.wtako.WTAKOUtils.Commands.Wut.ArgHelp;
+import net.wtako.WTAKOUtils.Commands.Wut.ArgRandomlyReduceEntity;
 import net.wtako.WTAKOUtils.Commands.Wut.ArgReload;
 
 import org.bukkit.command.Command;
@@ -17,6 +20,15 @@ public class CommandWut implements CommandExecutor {
                 return true;
             } else if (args[0].equalsIgnoreCase("reload")) {
                 new ArgReload(sender);
+                return true;
+            } else if (args[0].equalsIgnoreCase("ce")) {
+                new ArgCountEntity(sender, args);
+                return true;
+            } else if (args[0].equalsIgnoreCase("aoe")) {
+                new ArgAmountsOfEntities(sender, args);
+                return true;
+            } else if (args[0].equalsIgnoreCase("rre")) {
+                new ArgRandomlyReduceEntity(sender, args);
                 return true;
             }
         }

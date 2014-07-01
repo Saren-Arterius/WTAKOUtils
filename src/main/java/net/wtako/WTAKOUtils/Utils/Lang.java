@@ -14,9 +14,22 @@ public enum Lang {
 
     TITLE("title", "[" + Main.getInstance().getName() + "]"),
 
-    PLUGIN_RELOADED("plugin-reloaded", "&aPlugin reloaded."),
+    COUNT_ENTITY_NO_SUCH_THING("count-entity-no-such-thing", "&eThere is no entity type named <&f{0}&e>."),
+    HELP_COUNT_ENTITY(
+            "help-count-entity",
+            "Type &a/"
+                    + Main.getInstance().getProperty("mainCommand").toLowerCase()
+                    + " ce <EntityType = all> <WorldName = yours> <ListItems = 10>&f to count top <ListItems> chunks with greatest amount of <EntityType> in <WorldName>. &c(OP only)"),
+    HELP_AOE("help-aoe", "Type &a/" + Main.getInstance().getProperty("mainCommand").toLowerCase()
+            + " aoe <WorldName = yours> &f to view amounts of entities in <WorldName>. &c(OP only)"),
+    HELP_RRE(
+            "help-rre",
+            "Type &a/"
+                    + Main.getInstance().getProperty("mainCommand").toLowerCase()
+                    + " rre <EntityType> <WorldName = yours> <Probability>&f to randomly remove <Probability>% of <EntityType> in <WorldName>. &c(OP only)"),
     HELP_RELOAD("help-reload", "Type &a/" + Main.getInstance().getProperty("mainCommand").toLowerCase()
             + " reload&f to reload the plugin. &c(OP only)"),
+    PLUGIN_RELOADED("plugin-reloaded", "&aPlugin reloaded."),
     NO_PERMISSION_COMMAND("no-permission-command", "&cYou are not allowed to use this command.");
 
     private String                   path;
