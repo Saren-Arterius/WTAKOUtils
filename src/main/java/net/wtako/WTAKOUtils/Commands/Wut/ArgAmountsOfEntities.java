@@ -9,7 +9,6 @@ import net.wtako.WTAKOUtils.Main;
 import net.wtako.WTAKOUtils.Utils.Lang;
 import net.wtako.WTAKOUtils.Utils.ValueComparator;
 
-import org.bukkit.ChatColor;
 import org.bukkit.World;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
@@ -52,13 +51,12 @@ public class ArgAmountsOfEntities {
                 final TreeMap<String, Integer> sortedMap = new TreeMap<String, Integer>(bvc);
                 sortedMap.putAll(countMap);
                 int counter = 0;
-                sender.sendMessage(MessageFormat.format(ChatColor.GREEN + "Top amount of entities in {0}:",
-                        world.getName()));
+                sender.sendMessage(MessageFormat.format(Lang.AOE_TOP_AMOUNT.toString(), world.getName()));
                 for (final Entry<String, Integer> entry: sortedMap.entrySet()) {
-                    sender.sendMessage(MessageFormat.format("{0}. {1}: {2}", counter++, entry.getKey(),
+                    sender.sendMessage(MessageFormat.format(Lang.PRINT_FORMAT.toString(), counter++, entry.getKey(),
                             entry.getValue()));
                 }
-                sender.sendMessage(MessageFormat.format(ChatColor.GREEN + "Total: {0}", entites.size()));
+                sender.sendMessage(MessageFormat.format(Lang.PRINT_TOTAL.toString(), entites.size()));
             }
 
         }.runTaskAsynchronously(Main.getInstance());

@@ -45,6 +45,10 @@ public class ArgCountEntity {
                             }
                         }
                     }
+                    if (world == null) {
+                        world = sender instanceof Player ? ((Player) sender).getWorld() : Main.getInstance()
+                                .getServer().getWorlds().get(0);
+                    }
                 }
                 EntityType entityType = null;
                 if (args.length >= 2) {
@@ -78,10 +82,10 @@ public class ArgCountEntity {
                     if (counter++ >= listItems) {
                         break;
                     }
-                    sender.sendMessage(MessageFormat.format(Lang.COUNT_ENTITY_FORMAT.toString(), counter,
-                            entry.getKey(), entry.getValue()));
+                    sender.sendMessage(MessageFormat.format(Lang.PRINT_FORMAT.toString(), counter, entry.getKey(),
+                            entry.getValue()));
                 }
-                sender.sendMessage(MessageFormat.format(Lang.COUNT_ENTITY_TOTAL.toString(), entityCount));
+                sender.sendMessage(MessageFormat.format(Lang.PRINT_TOTAL.toString(), entityCount));
             }
 
         }.runTaskAsynchronously(Main.getInstance());
