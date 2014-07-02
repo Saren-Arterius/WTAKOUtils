@@ -30,8 +30,14 @@ public class ArgAmountsOfEntities {
                 World world = sender instanceof Player ? ((Player) sender).getWorld() : Main.getInstance().getServer()
                         .getWorlds().get(0);
                 if (args.length >= 2) {
-                    final World parseWorld = Main.getInstance().getServer().getWorld(args[2]);
-                    world = parseWorld != null ? parseWorld : world;
+                    world = Main.getInstance().getServer().getWorld(args[1]);
+                    if (world == null) {
+                        for (final World loopWorld: Main.getInstance().getServer().getWorlds()) {
+                            if (loopWorld.getName().toLowerCase().startsWith(args[1])) {
+                                world = loopWorld;
+                            }
+                        }
+                    }
                 }
                 final TreeMap<String, Integer> countMap = new TreeMap<String, Integer>();
                 final List<Entity> entites = world.getEntities();

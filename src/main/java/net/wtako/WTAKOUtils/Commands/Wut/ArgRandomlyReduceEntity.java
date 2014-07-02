@@ -7,12 +7,10 @@ import java.util.Random;
 import net.wtako.WTAKOUtils.Main;
 import net.wtako.WTAKOUtils.Utils.Lang;
 
-import org.bukkit.ChatColor;
 import org.bukkit.World;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Player;
 
 public class ArgRandomlyReduceEntity {
 
@@ -35,10 +33,11 @@ public class ArgRandomlyReduceEntity {
             return;
         }
 
-        World world = sender instanceof Player ? ((Player) sender).getWorld() : Main.getInstance().getServer()
-                .getWorlds().get(0);
-        final World parseWorld = Main.getInstance().getServer().getWorld(args[2]);
-        world = parseWorld != null ? parseWorld : world;
+        final World world = Main.getInstance().getServer().getWorld(args[2]);
+        if (world == null) {
+            sender.sendMessage(MessageFormat.format(Lang.RRE_NO_SUCH_WORLD.toString(), args[2]));
+            return;
+        }
 
         EntityType entityType;
         try {
@@ -64,8 +63,8 @@ public class ArgRandomlyReduceEntity {
         for (final Entity entity: removingEntities) {
             entity.remove();
         }
-        sender.sendMessage(MessageFormat.format(ChatColor.GREEN + "Removed {0} {1} out of {2} in {3} by {4}%.",
-                removedEntityCount, entityType.name(), entityCount, world.getName(), reduceProb));
+        sender.sendMessage(MessageFormat.format(Lang.RRE_REMOVED.toString(), removedEntityCount, entityType.name(),
+                entityCount, world.getName(), reduceProb));
     }
 
 }

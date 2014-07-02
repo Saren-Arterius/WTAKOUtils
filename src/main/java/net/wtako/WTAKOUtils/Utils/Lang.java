@@ -15,6 +15,12 @@ public enum Lang {
     TITLE("title", "[" + Main.getInstance().getName() + "]"),
 
     COUNT_ENTITY_NO_SUCH_THING("count-entity-no-such-thing", "&eThere is no entity type named <&f{0}&e>."),
+    COUNT_ENTITY_TOP_CHUNKS("count-entity-top-chunks", "&aTop {0} chunks in {1} with most {2}(s):"),
+    COUNT_ENTITY_ENTITIES("count-entity-entities", "entities"),
+    COUNT_ENTITY_TOTAL("count-entity-total", "&aTotal: {0}"),
+    COUNT_ENTITY_FORMAT("count-entity-format", "{0}. {1}: {2}"),
+    RRE_NO_SUCH_WORLD("rre-no-such-world", "&eThere is no such world named <&f{0}&e>."),
+    RRE_REMOVED("rre-removed", "&aRemoved {0} {1} out of {2} in {3} by {4}%."),
     HELP_COUNT_ENTITY(
             "help-count-entity",
             "Type &a/"

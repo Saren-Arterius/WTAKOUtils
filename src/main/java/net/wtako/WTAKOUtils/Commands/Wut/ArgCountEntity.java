@@ -8,7 +8,6 @@ import net.wtako.WTAKOUtils.Main;
 import net.wtako.WTAKOUtils.Utils.Lang;
 import net.wtako.WTAKOUtils.Utils.ValueComparator;
 
-import org.bukkit.ChatColor;
 import org.bukkit.World;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
@@ -38,8 +37,14 @@ public class ArgCountEntity {
                 World world = sender instanceof Player ? ((Player) sender).getWorld() : Main.getInstance().getServer()
                         .getWorlds().get(0);
                 if (args.length >= 3) {
-                    final World parseWorld = Main.getInstance().getServer().getWorld(args[2]);
-                    world = parseWorld != null ? parseWorld : world;
+                    world = Main.getInstance().getServer().getWorld(args[2]);
+                    if (world == null) {
+                        for (final World loopWorld: Main.getInstance().getServer().getWorlds()) {
+                            if (loopWorld.getName().toLowerCase().startsWith(args[2])) {
+                                world = loopWorld;
+                            }
+                        }
+                    }
                 }
                 EntityType entityType = null;
                 if (args.length >= 2) {
@@ -67,15 +72,16 @@ public class ArgCountEntity {
                 final TreeMap<String, Integer> sortedMap = new TreeMap<String, Integer>(bvc);
                 sortedMap.putAll(countMap);
                 int counter = 0;
-                sender.sendMessage(MessageFormat.format(ChatColor.GREEN + "Top {0} chunks in {1} with most {2}(s):",
-                        listItems, world.getName(), entityType != null ? entityType.name() : "entities"));
+                sender.sendMessage(MessageFormat.format(Lang.COUNT_ENTITY_TOP_CHUNKS.toString(), listItems,
+                        world.getName(), entityType != null ? entityType.name() : Lang.COUNT_ENTITY_ENTITIES.toString()));
                 for (final Entry<String, Integer> entry: sortedMap.entrySet()) {
                     if (counter++ >= listItems) {
                         break;
                     }
-                    sender.sendMessage(MessageFormat.format("{0}. {1}: {2}", counter, entry.getKey(), entry.getValue()));
+                    sender.sendMessage(MessageFormat.format(Lang.COUNT_ENTITY_FORMAT.toString(), counter,
+                            entry.getKey(), entry.getValue()));
                 }
-                sender.sendMessage(MessageFormat.format(ChatColor.GREEN + "Total: {0}", entityCount));
+                sender.sendMessage(MessageFormat.format(Lang.COUNT_ENTITY_TOTAL.toString(), entityCount));
             }
 
         }.runTaskAsynchronously(Main.getInstance());
