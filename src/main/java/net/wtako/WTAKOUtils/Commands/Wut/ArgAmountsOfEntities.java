@@ -18,10 +18,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 public class ArgAmountsOfEntities {
 
     public ArgAmountsOfEntities(final CommandSender sender, final String[] args) {
-        if (!sender.hasPermission(Main.getInstance().getProperty("artifactId") + ".admin")) {
-            sender.sendMessage(Lang.NO_PERMISSION_COMMAND.toString());
-            return;
-        }
+
         new BukkitRunnable() {
 
             @Override

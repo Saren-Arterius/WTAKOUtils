@@ -7,7 +7,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import net.wtako.WTAKOUtils.Commands.CommandWut;
+import net.wtako.WTAKOUtils.EventHandlers.CommandListener;
+import net.wtako.WTAKOUtils.EventHandlers.LavaListener;
 import net.wtako.WTAKOUtils.EventHandlers.PistonListener;
+import net.wtako.WTAKOUtils.Utils.Config;
 import net.wtako.WTAKOUtils.Utils.Lang;
 
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -16,6 +19,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public final class Main extends JavaPlugin {
 
     private static Main             instance;
+    public static String            artifactId;
     public static YamlConfiguration LANG;
     public static File              LANG_FILE;
     public static Logger            log = Logger.getLogger("WTAKOUtils");
@@ -23,10 +27,12 @@ public final class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         Main.instance = this;
-        saveDefaultConfig();
-        getConfig().options().copyDefaults(true);
+        Main.artifactId = getProperty("artifactId");
         getCommand(getProperty("mainCommand")).setExecutor(new CommandWut());
         getServer().getPluginManager().registerEvents(new PistonListener(), this);
+        getServer().getPluginManager().registerEvents(new LavaListener(), this);
+        getServer().getPluginManager().registerEvents(new CommandListener(), this);
+        Config.saveAll();
         loadLang();
     }
 
@@ -95,14 +101,6 @@ public final class Main extends JavaPlugin {
 
     public static Main getInstance() {
         return Main.instance;
-    }
-
-    public static String getHumanTranslation(String key) {
-        final String resultString = Main.getInstance().getConfig().getString("Translation." + key);
-        if (resultString == null || resultString.length() == 0) {
-            return key;
-        }
-        return resultString;
     }
 
 }

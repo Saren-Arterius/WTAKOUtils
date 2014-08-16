@@ -15,10 +15,6 @@ import org.bukkit.entity.EntityType;
 public class ArgRandomlyReduceEntity {
 
     public ArgRandomlyReduceEntity(CommandSender sender, String[] args) {
-        if (!sender.hasPermission(Main.getInstance().getProperty("artifactId") + ".admin")) {
-            sender.sendMessage(Lang.NO_PERMISSION_COMMAND.toString());
-            return;
-        }
         if (args.length < 4) {
             sender.sendMessage(Lang.HELP_RRE.toString());
             return;

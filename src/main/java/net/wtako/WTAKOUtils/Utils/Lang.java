@@ -23,20 +23,24 @@ public enum Lang {
     RRE_REMOVED("rre-removed", "&aRemoved {0} {1} out of {2} in {3} by {4}%."),
     PRINT_TOTAL("print-total", "&aTotal: {0}"),
     PRINT_FORMAT("print-format", "{0}. {1}: {2}"),
+    COMMAND_HELP_SEPERATOR("command-help-seperator", "&6 | &a"),
     HELP_COUNT_ENTITY(
             "help-count-entity",
-            "Type &a/"
-                    + Main.getInstance().getProperty("mainCommand").toLowerCase()
-                    + " ce <EntityType = all> <WorldName = yours> <ListItems = 10>&f to count top <ListItems> chunks with greatest amount of <EntityType> in <WorldName>. &c(OP only)"),
-    HELP_AOE("help-aoe", "Type &a/" + Main.getInstance().getProperty("mainCommand").toLowerCase()
-            + " aoe <WorldName = yours> &f to view amounts of entities in <WorldName>. &c(OP only)"),
+            "Type &b/"
+                    + Main.getInstance().getProperty("mainCommand")
+                    + " &a{0}&f <EntityType = all> <WorldName = yours> <ListItems = 10>&f to count top <ListItems> chunks with greatest amount of <EntityType> in <WorldName>. {1}"),
+    HELP_AOE("help-aoe", "Type &b/" + Main.getInstance().getProperty("mainCommand")
+            + " &a{0}&f <WorldName = yours> &f to view amounts of entities in <WorldName>. {1}"),
     HELP_RRE(
             "help-rre",
-            "Type &a/"
-                    + Main.getInstance().getProperty("mainCommand").toLowerCase()
-                    + " rre <EntityType> <WorldName = yours> <Probability>&f to randomly remove <Probability>% of <EntityType> in <WorldName>. &c(OP only)"),
-    HELP_RELOAD("help-reload", "Type &a/" + Main.getInstance().getProperty("mainCommand").toLowerCase()
-            + " reload&f to reload the plugin. &c(OP only)"),
+            "Type &b/"
+                    + Main.getInstance().getProperty("mainCommand")
+                    + " &a{0}&f <EntityType> <WorldName = yours> <Probability>&f to randomly remove <Probability>% of <EntityType> in <WorldName>. {1}"),
+    HELP_HELP("help-help", "Type &b/" + Main.getInstance().getProperty("mainCommand")
+            + " &a{0}&f to show help (this message). {1}"),
+    HELP_RELOAD("help-reload", "Type &b/" + Main.getInstance().getProperty("mainCommand")
+            + " &a{0}&f to reload the plugin. {1}"),
+    NO_PERMISSION_HELP("no-permission-help", "(&cno permission&f)"),
     PLUGIN_RELOADED("plugin-reloaded", "&aPlugin reloaded."),
     NO_PERMISSION_COMMAND("no-permission-command", "&cYou are not allowed to use this command.");
 

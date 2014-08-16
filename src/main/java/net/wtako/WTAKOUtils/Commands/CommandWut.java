@@ -1,10 +1,9 @@
 package net.wtako.WTAKOUtils.Commands;
 
-import net.wtako.WTAKOUtils.Commands.Wut.ArgAmountsOfEntities;
-import net.wtako.WTAKOUtils.Commands.Wut.ArgCountEntity;
-import net.wtako.WTAKOUtils.Commands.Wut.ArgHelp;
-import net.wtako.WTAKOUtils.Commands.Wut.ArgRandomlyReduceEntity;
-import net.wtako.WTAKOUtils.Commands.Wut.ArgReload;
+import java.lang.reflect.InvocationTargetException;
+
+import net.wtako.WTAKOUtils.Utils.Commands;
+import net.wtako.WTAKOUtils.Utils.Lang;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -15,23 +14,27 @@ public class CommandWut implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (args.length >= 1) {
-            if (args[0].equalsIgnoreCase("help") || args[0].equalsIgnoreCase("?")) {
-                new ArgHelp(sender);
-                return true;
-            } else if (args[0].equalsIgnoreCase("reload")) {
-                new ArgReload(sender);
-                return true;
-            } else if (args[0].equalsIgnoreCase("ce")) {
-                new ArgCountEntity(sender, args);
-                return true;
-            } else if (args[0].equalsIgnoreCase("aoe")) {
-                new ArgAmountsOfEntities(sender, args);
-                return true;
-            } else if (args[0].equalsIgnoreCase("rre")) {
-                new ArgRandomlyReduceEntity(sender, args);
+            return callCommand(sender, args, args[0]);
+        }
+        return callCommand(sender, args, "MAIN_COMMAND");
+    }
+
+    public boolean callCommand(CommandSender sender, String[] args, String targetCommandName) {
+        try {
+            final Commands targetCommand = Commands.valueOf(targetCommandName.toUpperCase());
+            if (!sender.hasPermission(targetCommand.getRequiredPermission())) {
+                sender.sendMessage(Lang.NO_PERMISSION_COMMAND.toString());
                 return true;
             }
+            targetCommand.getTargetClass().getDeclaredConstructor(CommandSender.class, String[].class)
+                    .newInstance(sender, args);
+            return true;
+        } catch (final IllegalArgumentException e) {
+            return false;
+        } catch (NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException
+                | InvocationTargetException e) {
+            e.printStackTrace();
+            return false;
         }
-        return false;
     }
 }
