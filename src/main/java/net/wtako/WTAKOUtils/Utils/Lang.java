@@ -12,37 +12,33 @@ import org.bukkit.configuration.file.YamlConfiguration;
  */
 public enum Lang {
 
-    TITLE("title", "[" + Main.getInstance().getName() + "]"),
+    TITLE("[" + Main.getInstance().getName() + "]"),
 
-    AOE_TOP_AMOUNT("aoe-top-amount", "&aTop amount of entities in {0}:"),
+    AOE_TOP_AMOUNT("&aTop amount of entities in {0}:"),
 
-    COUNT_ENTITY_NO_SUCH_THING("count-entity-no-such-thing", "&eThere is no entity type named <&f{0}&e>."),
-    COUNT_ENTITY_TOP_CHUNKS("count-entity-top-chunks", "&aTop {0} chunks in {1} with most {2}(s):"),
-    COUNT_ENTITY_ENTITIES("count-entity-entities", "entities"),
-    RRE_NO_SUCH_WORLD("rre-no-such-world", "&eThere is no such world named <&f{0}&e>."),
-    RRE_REMOVED("rre-removed", "&aRemoved {0} {1} out of {2} in {3} by {4}%."),
-    PRINT_TOTAL("print-total", "&aTotal: {0}"),
-    PRINT_FORMAT("print-format", "{0}. {1}: {2}"),
-    COMMAND_HELP_SEPERATOR("command-help-seperator", "&6 | &a"),
+    COUNT_ENTITY_NO_SUCH_THING("&eThere is no entity type named <&f{0}&e>."),
+    COUNT_ENTITY_TOP_CHUNKS("&aTop {0} chunks in {1} with most {2}(s):"),
+    COUNT_ENTITY_ENTITIES("entities"),
+    RRE_NO_SUCH_WORLD("&eThere is no such world named <&f{0}&e>."),
+    RRE_REMOVED("&aRemoved {0} {1} out of {2} in {3} by {4}%."),
+    PRINT_TOTAL("&aTotal: {0}"),
+    PRINT_FORMAT("{0}. {1}: {2}"),
+    COMMAND_HELP_SEPERATOR("&6 | &a"),
     HELP_COUNT_ENTITY(
-            "help-count-entity",
             "Type &b/"
                     + Main.getInstance().getProperty("mainCommand")
                     + " &a{0}&f <EntityType = all> <WorldName = yours> <ListItems = 10>&f to count top <ListItems> chunks with greatest amount of <EntityType> in <WorldName>. {1}"),
-    HELP_AOE("help-aoe", "Type &b/" + Main.getInstance().getProperty("mainCommand")
+    HELP_AOE("Type &b/" + Main.getInstance().getProperty("mainCommand")
             + " &a{0}&f <WorldName = yours> &f to view amounts of entities in <WorldName>. {1}"),
     HELP_RRE(
-            "help-rre",
             "Type &b/"
                     + Main.getInstance().getProperty("mainCommand")
                     + " &a{0}&f <EntityType> <WorldName = yours> <Probability>&f to randomly remove <Probability>% of <EntityType> in <WorldName>. {1}"),
-    HELP_HELP("help-help", "Type &b/" + Main.getInstance().getProperty("mainCommand")
-            + " &a{0}&f to show help (this message). {1}"),
-    HELP_RELOAD("help-reload", "Type &b/" + Main.getInstance().getProperty("mainCommand")
-            + " &a{0}&f to reload the plugin. {1}"),
-    NO_PERMISSION_HELP("no-permission-help", "(&cno permission&f)"),
-    PLUGIN_RELOADED("plugin-reloaded", "&aPlugin reloaded."),
-    NO_PERMISSION_COMMAND("no-permission-command", "&cYou are not allowed to use this command.");
+    HELP_HELP("Type &b/" + Main.getInstance().getProperty("mainCommand") + " &a{0}&f to show help (this message). {1}"),
+    HELP_RELOAD("Type &b/" + Main.getInstance().getProperty("mainCommand") + " &a{0}&f to reload the plugin. {1}"),
+    NO_PERMISSION_HELP("(&cno permission&f)"),
+    PLUGIN_RELOADED("&aPlugin reloaded."),
+    NO_PERMISSION_COMMAND("&cYou are not allowed to use this command.");
 
     private String                   path;
     private String                   def;
@@ -56,8 +52,8 @@ public enum Lang {
      * @param start
      *            The default string.
      */
-    Lang(String path, String start) {
-        this.path = path;
+    Lang(String start) {
+        this.path = name().toLowerCase().replace("_", "-");
         def = start;
     }
 
