@@ -13,7 +13,7 @@ public class CommandListener implements Listener {
         if (!Config.BAN_ACC_SAY.getBoolean()) {
             return;
         }
-        String[] args = event.getMessage().split(" ");
+        final String[] args = event.getMessage().split(" ");
         if (args.length < 2) {
             return;
         }

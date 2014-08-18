@@ -5,14 +5,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
-import org.bukkit.command.CommandSender;
-import org.bukkit.scheduler.BukkitRunnable;
-
 import net.wtako.WTAKOUtils.Main;
 import net.wtako.WTAKOUtils.Commands.Wut.ArgAmountsOfEntities;
 import net.wtako.WTAKOUtils.Commands.Wut.ArgCountEntity;
 import net.wtako.WTAKOUtils.Commands.Wut.ArgHelp;
 import net.wtako.WTAKOUtils.Commands.Wut.ArgReload;
+
+import org.bukkit.command.CommandSender;
+import org.bukkit.scheduler.BukkitRunnable;
 
 public enum Commands implements BaseCommands {
 
@@ -34,10 +34,12 @@ public enum Commands implements BaseCommands {
         this.permission = permission;
     }
 
+    @Override
     public String getHelpMessage() {
         return helpMessage;
     }
 
+    @Override
     public Class<?> getTargetClass() {
         return targetClass;
     }

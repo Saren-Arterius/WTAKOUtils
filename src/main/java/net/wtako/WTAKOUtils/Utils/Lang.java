@@ -32,7 +32,7 @@ public enum Lang {
                     + " &a{0}&f <EntityType = all> <WorldName = yours> <ListItems = 10>&f to count top <ListItems> chunks with greatest amount of <EntityType> in <WorldName>. {1}"),
     HELP_AOE("Type &b/" + Main.getInstance().getProperty("mainCommand")
             + " &a{0}&f <WorldName = yours> &f to view amounts of entities in <WorldName>. {1}"),
-            
+
     HELP_RRE(
             "Type &b/"
                     + Main.getInstance().getProperty("mainCommand")
@@ -56,7 +56,7 @@ public enum Lang {
      *            The default string.
      */
     Lang(String start) {
-        this.path = name().toLowerCase().replace("_", "-");
+        path = name().toLowerCase().replace("_", "-");
         def = start;
     }
 
