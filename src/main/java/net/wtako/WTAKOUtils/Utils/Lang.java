@@ -24,12 +24,15 @@ public enum Lang {
     PRINT_TOTAL("&aTotal: {0}"),
     PRINT_FORMAT("{0}. {1}: {2}"),
     COMMAND_HELP_SEPERATOR("&6 | &a"),
+    COMMAND_ARG_IN_USE("&e{0}&a"),
+    SUB_COMMAND("Sub-command: &e{0}"),
     HELP_COUNT_ENTITY(
             "Type &b/"
                     + Main.getInstance().getProperty("mainCommand")
                     + " &a{0}&f <EntityType = all> <WorldName = yours> <ListItems = 10>&f to count top <ListItems> chunks with greatest amount of <EntityType> in <WorldName>. {1}"),
     HELP_AOE("Type &b/" + Main.getInstance().getProperty("mainCommand")
             + " &a{0}&f <WorldName = yours> &f to view amounts of entities in <WorldName>. {1}"),
+            
     HELP_RRE(
             "Type &b/"
                     + Main.getInstance().getProperty("mainCommand")
