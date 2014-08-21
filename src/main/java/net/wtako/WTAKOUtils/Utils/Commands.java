@@ -44,8 +44,20 @@ public enum Commands implements BaseCommands {
         return targetClass;
     }
 
+    @Override
     public String getRequiredPermission() {
         return permission;
+    }
+
+    public static String joinArgsInUse(String[] args, int level) {
+        String argsMessage = "";
+        for (int i = 0; i < level; i++) {
+            argsMessage += MessageFormat.format(Lang.COMMAND_ARG_IN_USE.toString(), args[i]);
+            if (i < level - 1) {
+                argsMessage += " ";
+            }
+        }
+        return argsMessage;
     }
 
     public static void sendHelp(final CommandSender sender, final BaseCommands[] commandValues, final String commandName) {
@@ -66,14 +78,14 @@ public enum Commands implements BaseCommands {
                     boolean hasHelpMessage = false;
                     for (final Entry<String, ArrayList<String>> entry: commandHelps.entrySet()) {
                         if (entry.getKey().equalsIgnoreCase(command.getHelpMessage())) {
-                            entry.getValue().add(command.name().toLowerCase());
+                            entry.getValue().add(command.name().toLowerCase().replace("_", "-"));
                             hasHelpMessage = true;
                             break;
                         }
                     }
                     if (!hasHelpMessage) {
                         final ArrayList<String> commandList = new ArrayList<String>();
-                        commandList.add(command.name().toLowerCase());
+                        commandList.add(command.name().toLowerCase().replace("_", "-"));
                         commandHelps.put(command.getHelpMessage(), commandList);
                     }
                 }
@@ -88,7 +100,7 @@ public enum Commands implements BaseCommands {
                         }
                     }
                     String permissionString = "";
-                    for (final Commands command: Commands.values()) {
+                    for (final BaseCommands command: commandValues) {
                         if (command.getHelpMessage().equalsIgnoreCase(entry.getKey())
                                 && !sender.hasPermission(command.getRequiredPermission())) {
                             permissionString = Lang.NO_PERMISSION_HELP.toString();
