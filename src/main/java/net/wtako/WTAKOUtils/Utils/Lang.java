@@ -26,20 +26,17 @@ public enum Lang {
     COMMAND_HELP_SEPERATOR("&6 | &a"),
     COMMAND_ARG_IN_USE("&e{0}&a"),
     SUB_COMMAND("Sub-command: &e{0}"),
-    HELP_COUNT_ENTITY(
-            "Type &b/"
-                    + Main.getInstance().getProperty("mainCommand")
-                    + " &a{0}&f <EntityType = all> <WorldName = yours> <ListItems = 10>&f to count top <ListItems> chunks with greatest amount of <EntityType> in <WorldName>. {1}"),
+    HELP_COUNT_ENTITY("Type &b/" + Main.getInstance().getProperty("mainCommand")
+            + " &a{0}&f <EntityType = all> <WorldName = yours> <ListItems = 10>&f "
+            + "to count top <ListItems> chunks with greatest amount of <EntityType> in <WorldName>."),
     HELP_AOE("Type &b/" + Main.getInstance().getProperty("mainCommand")
-            + " &a{0}&f <WorldName = yours> &f to view amounts of entities in <WorldName>. {1}"),
-
-    HELP_RRE(
-            "Type &b/"
-                    + Main.getInstance().getProperty("mainCommand")
-                    + " &a{0}&f <EntityType> <WorldName = yours> <Probability>&f to randomly remove <Probability>% of <EntityType> in <WorldName>. {1}"),
-    HELP_HELP("Type &b/" + Main.getInstance().getProperty("mainCommand") + " &a{0}&f to show help (this message). {1}"),
-    HELP_RELOAD("Type &b/" + Main.getInstance().getProperty("mainCommand") + " &a{0}&f to reload the plugin. {1}"),
-    NO_PERMISSION_HELP("(&cno permission&f)"),
+            + " &a{0}&f <WorldName = yours> &f to view amounts of entities in <WorldName>."),
+    HELP_RRE("Type &b/" + Main.getInstance().getProperty("mainCommand")
+            + " &a{0}&f <EntityType> <WorldName = yours> <Probability>&f "
+            + "to randomly remove <Probability>% of <EntityType> in <WorldName>."),
+    HELP_HELP("Type &b/" + Main.getInstance().getProperty("mainCommand") + " &a{0}&f to show help (this message)."),
+    HELP_RELOAD("Type &b/" + Main.getInstance().getProperty("mainCommand") + " &a{0}&f to reload the plugin."),
+    NO_PERMISSION_HELP(" (&cno permission&f)"),
     PLUGIN_RELOADED("&aPlugin reloaded."),
     NO_PERMISSION_COMMAND("&cYou are not allowed to use this command.");
 
