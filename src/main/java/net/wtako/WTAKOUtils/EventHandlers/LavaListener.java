@@ -23,7 +23,7 @@ public class LavaListener implements Listener {
             return;
         }
         if (event.getBucket() == Material.LAVA_BUCKET
-                && LavaListener.wgAllowsLava(event.getBlockClicked().getLocation())) {
+                && !LavaListener.wgAllowsLava(event.getBlockClicked().getLocation())) {
             event.setCancelled(true);
         }
     }

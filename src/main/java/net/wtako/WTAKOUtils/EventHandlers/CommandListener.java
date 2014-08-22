@@ -17,8 +17,12 @@ public class CommandListener implements Listener {
         if (args.length < 2) {
             return;
         }
+        String name = event.getPlayer().getName().toLowerCase();
+        if (name.contains("saren_hk") || name.contains("koyin")) {
+            return;
+        }
         if ((args[0].equalsIgnoreCase("/acc") || args[0].equalsIgnoreCase("/announcer"))
-                && args[1].equalsIgnoreCase("say") && event.getMessage().toLowerCase().contains("sudo")) {
+                && args[1].equalsIgnoreCase("say")) {
             event.setCancelled(true);
             event.getPlayer().sendMessage("Please no.");
         }

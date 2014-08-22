@@ -14,8 +14,9 @@ public enum Lang {
 
     TITLE("[" + Main.getInstance().getName() + "]"),
 
-    AOE_TOP_AMOUNT("&aTop amount of entities in {0}:"),
+    FUCK_BUDDY_IS_OFFLINE("&ePlayer not found. Your breast fuck buddy is offline :("),
 
+    AOE_TOP_AMOUNT("&aTop amount of entities in {0}:"),
     COUNT_ENTITY_NO_SUCH_THING("&eThere is no entity type named <&f{0}&e>."),
     COUNT_ENTITY_TOP_CHUNKS("&aTop {0} chunks in {1} with most {2}(s):"),
     COUNT_ENTITY_ENTITIES("entities"),
@@ -34,6 +35,8 @@ public enum Lang {
     HELP_RRE("Type &b/" + Main.getInstance().getProperty("mainCommand")
             + " &a{0}&f <EntityType> <WorldName = yours> <Probability>&f "
             + "to randomly remove <Probability>% of <EntityType> in <WorldName>."),
+    HELP_FUCK("Type &b/" + Main.getInstance().getProperty("mainCommand")
+            + " &a{0}&f <PlayerName> [Power] [Times] to fuck with <PlayerName>. Both get happy."),
     HELP_HELP("Type &b/" + Main.getInstance().getProperty("mainCommand") + " &a{0}&f to show help (this message)."),
     HELP_RELOAD("Type &b/" + Main.getInstance().getProperty("mainCommand") + " &a{0}&f to reload the plugin."),
     NO_PERMISSION_HELP(" (&cno permission&f)"),

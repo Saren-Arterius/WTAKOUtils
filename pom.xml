@@ -12,7 +12,6 @@
 		<author>Saren</author>
 		<mainClass>Main</mainClass>
 		<mainCommand>wut</mainCommand>
-
 	</properties>
 
 	<repositories>
