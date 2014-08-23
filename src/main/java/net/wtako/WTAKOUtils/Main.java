@@ -6,6 +6,9 @@ import java.io.InputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import net.wtako.WTAKOUtils.Commands.CommandFuck;
+import net.wtako.WTAKOUtils.Commands.CommandMulti;
+import net.wtako.WTAKOUtils.Commands.CommandTimeout;
 import net.wtako.WTAKOUtils.Commands.CommandWut;
 import net.wtako.WTAKOUtils.EventHandlers.CommandListener;
 import net.wtako.WTAKOUtils.EventHandlers.LavaListener;
@@ -29,6 +32,9 @@ public final class Main extends JavaPlugin {
         Main.instance = this;
         Main.artifactId = getProperty("artifactId");
         getCommand(getProperty("mainCommand")).setExecutor(new CommandWut());
+        getCommand("fuck").setExecutor(new CommandFuck());
+        getCommand("timeout").setExecutor(new CommandTimeout());
+        getCommand("multi").setExecutor(new CommandMulti());
         getServer().getPluginManager().registerEvents(new PistonListener(), this);
         getServer().getPluginManager().registerEvents(new LavaListener(), this);
         getServer().getPluginManager().registerEvents(new CommandListener(), this);

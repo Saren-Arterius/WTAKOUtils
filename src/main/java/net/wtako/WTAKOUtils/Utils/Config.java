@@ -9,7 +9,10 @@ import org.bukkit.configuration.file.FileConfiguration;
 public enum Config {
 
     PREVENT_RAIL_DUPLICATE("bug-fix.prevent-rail-duplicatre", true),
-    BAN_ACC_SAY("ban.acc-say", true);
+    BAN_ACC_SAY("ban.acc-say", true),
+    FUCK_MAX_POWER("fuck.max-power", 20),
+    FUCK_MAX_TIMES("fuck.max-times", 300),
+    TIMEOUT_MAX_TICKS("timeout.max-ticks", 1200);
 
     private String path;
     private Object value;

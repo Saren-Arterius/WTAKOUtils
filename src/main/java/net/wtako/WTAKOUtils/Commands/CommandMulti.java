@@ -2,14 +2,14 @@ package net.wtako.WTAKOUtils.Commands;
 
 import java.lang.reflect.InvocationTargetException;
 
-import net.wtako.WTAKOUtils.Utils.CommandsFuck;
+import net.wtako.WTAKOUtils.Utils.CommandsMulti;
 import net.wtako.WTAKOUtils.Utils.Lang;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-public class CommandFuck implements CommandExecutor {
+public class CommandMulti implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
@@ -18,7 +18,8 @@ public class CommandFuck implements CommandExecutor {
 
     public boolean callCommand(CommandSender sender, String[] args, String targetCommandName) {
         try {
-            final CommandsFuck targetCommand = CommandsFuck.valueOf(targetCommandName.toUpperCase().replace("-", "_"));
+            final CommandsMulti targetCommand = CommandsMulti
+                    .valueOf(targetCommandName.toUpperCase().replace("-", "_"));
             if (!sender.hasPermission(targetCommand.getRequiredPermission())) {
                 sender.sendMessage(Lang.NO_PERMISSION_COMMAND.toString());
                 return true;

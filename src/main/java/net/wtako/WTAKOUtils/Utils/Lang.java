@@ -14,7 +14,11 @@ public enum Lang {
 
     TITLE("[" + Main.getInstance().getName() + "]"),
 
-    FUCK_BUDDY_IS_OFFLINE("&ePlayer not found. Your breast fuck buddy is offline :("),
+    FUCK_BUDDY_IS_OFFLINE("&ePlayer not found. &bYour breast fuck buddy is offline :("),
+    PLAYER_FUCKED_YOU("You are fucked by &e{0}&f for &a{1}&f times using &b{2}x&f power."),
+    YOU_FUCKED_PLAYER("You fucked &e{0}&f for &a{1}&f times using &b{2}x&f power."),
+    YOU_ARE_HAPPY_NOW("&eYou are very happy now."),
+    SELF_FUCK("Watch this: http://www.efukt.com/21155_This_Guy_Told_Me_To_Go_Fuck_Myself.html"),
 
     AOE_TOP_AMOUNT("&aTop amount of entities in {0}:"),
     COUNT_ENTITY_NO_SUCH_THING("&eThere is no entity type named <&f{0}&e>."),
@@ -35,8 +39,9 @@ public enum Lang {
     HELP_RRE("Type &b/" + Main.getInstance().getProperty("mainCommand")
             + " &a{0}&f <EntityType> <WorldName = yours> <Probability>&f "
             + "to randomly remove <Probability>% of <EntityType> in <WorldName>."),
-    HELP_FUCK("Type &b/" + Main.getInstance().getProperty("mainCommand")
-            + " &a{0}&f <PlayerName> [Power] [Times] to fuck with <PlayerName>. Both get happy."),
+    HELP_FUCK("Type &b/fuck&f <PlayerName> [Power] [Times] to fuck with <PlayerName>. You both will get happy."),
+    HELP_TIMEOUT("Type &b/timeout&f <DelayTicks> <Command> to execute the command later."),
+    HELP_MULTI("Type &b/multi&f <Command> to execute multiple commands at same time. Delimiter is <; >."),
     HELP_HELP("Type &b/" + Main.getInstance().getProperty("mainCommand") + " &a{0}&f to show help (this message)."),
     HELP_RELOAD("Type &b/" + Main.getInstance().getProperty("mainCommand") + " &a{0}&f to reload the plugin."),
     NO_PERMISSION_HELP(" (&cno permission&f)"),

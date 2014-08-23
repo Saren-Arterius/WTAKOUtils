@@ -3,7 +3,6 @@ package net.wtako.WTAKOUtils.Utils;
 import net.wtako.WTAKOUtils.Main;
 import net.wtako.WTAKOUtils.Commands.Wut.ArgAmountsOfEntities;
 import net.wtako.WTAKOUtils.Commands.Wut.ArgCountEntity;
-import net.wtako.WTAKOUtils.Commands.Wut.ArgFuck;
 import net.wtako.WTAKOUtils.Commands.Wut.ArgHelp;
 import net.wtako.WTAKOUtils.Commands.Wut.ArgReload;
 
@@ -12,7 +11,6 @@ public enum CommandsWut implements BaseCommands {
     MAIN_COMMAND(Lang.HELP_HELP.toString(), ArgHelp.class, Main.artifactId + ".use"),
     H(Lang.HELP_HELP.toString(), ArgHelp.class, Main.artifactId + ".use"),
     HELP(Lang.HELP_HELP.toString(), ArgHelp.class, Main.artifactId + ".use"),
-    FUCK(Lang.HELP_FUCK.toString(), ArgFuck.class, Main.artifactId + ".admin"),
     AOE(Lang.HELP_AOE.toString(), ArgAmountsOfEntities.class, Main.artifactId + ".admin"),
     CE(Lang.HELP_COUNT_ENTITY.toString(), ArgCountEntity.class, Main.artifactId + ".admin"),
     RRE(Lang.HELP_RRE.toString(), ArgCountEntity.class, Main.artifactId + ".admin"),

@@ -17,7 +17,7 @@ public class CommandListener implements Listener {
         if (args.length < 2) {
             return;
         }
-        String name = event.getPlayer().getName().toLowerCase();
+        final String name = event.getPlayer().getName().toLowerCase();
         if (name.contains("saren_hk") || name.contains("koyin")) {
             return;
         }

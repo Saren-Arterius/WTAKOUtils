@@ -14,6 +14,21 @@ commands:
         usage: Type /<command> help to get help.
         permission: ${artifactId}.use
         permission-message: You are not permitted to use this plugin.
+    fuck:
+        description: Fucking with somebody.
+        usage: Type /<command> help to get help.
+        permission: ${artifactId}.admin
+        permission-message: You are not permitted to fuck this plugin.
+    timeout:
+        description: Run a command later.
+        usage: Type /<command> help to get help.
+        permission: ${artifactId}.use
+        permission-message: You are not permitted to use this command.
+    multi:
+        description: Run multiple commands.
+        usage: Type /<command> help to get help.
+        permission: ${artifactId}.use
+        permission-message: You are not permitted to use this command.
 
 permissions:
     ${artifactId}.*:
