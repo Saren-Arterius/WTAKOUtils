@@ -1,6 +1,5 @@
 package net.wtako.WTAKOUtils;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.logging.Level;
@@ -18,6 +17,8 @@ import net.wtako.WTAKOUtils.Utils.Lang;
 
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import de.schlichtherle.io.File;
 
 public final class Main extends JavaPlugin {
 
@@ -60,7 +61,7 @@ public final class Main extends JavaPlugin {
                 Main.log.severe("[" + Main.getInstance().getName() + "] Couldn't create language file.");
                 Main.log.severe("[" + Main.getInstance().getName() + "] This is a fatal error. Now disabling");
                 setEnabled(false); // Without it loaded, we can't send them
-                                   // messages
+                // messages
             }
         }
         final YamlConfiguration conf = YamlConfiguration.loadConfiguration(lang);

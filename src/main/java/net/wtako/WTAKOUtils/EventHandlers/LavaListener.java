@@ -28,6 +28,7 @@ public class LavaListener implements Listener {
         }
     }
 
+    @SuppressWarnings("deprecation")
     public static boolean wgAllowsLava(Location location) {
         try {
             final WorldGuardPlugin worldGuard = LavaListener.getWorldGuard();

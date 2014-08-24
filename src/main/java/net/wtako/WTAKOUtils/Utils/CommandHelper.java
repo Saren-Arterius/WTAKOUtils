@@ -14,6 +14,7 @@ public class CommandHelper {
 
     public static void sendHelp(final CommandSender sender, final BaseCommands[] commandValues, final String commandName) {
         new BukkitRunnable() {
+
             @Override
             public void run() {
                 final ArrayList<String> messages = new ArrayList<String>();

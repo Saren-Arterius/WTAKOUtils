@@ -38,6 +38,7 @@ public class MainCommand {
         final String finalCommand = command;
 
         new BukkitRunnable() {
+
             @Override
             public void run() {
                 Main.getInstance().getServer().dispatchCommand(sender, finalCommand);

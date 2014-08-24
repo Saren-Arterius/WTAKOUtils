@@ -25,13 +25,10 @@ public class CommandMulti implements CommandExecutor {
                 return true;
             }
             targetCommand.getTargetClass().getDeclaredConstructor(CommandSender.class, String[].class)
-                    .newInstance(sender, args);
+            .newInstance(sender, args);
             return true;
-        } catch (final IllegalArgumentException e) {
-            return false;
-        } catch (NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException
-                | InvocationTargetException e) {
-            e.printStackTrace();
+        } catch (final IllegalArgumentException | InstantiationException | IllegalAccessException
+                | InvocationTargetException | NoSuchMethodException | SecurityException e) {
             return false;
         }
     }
