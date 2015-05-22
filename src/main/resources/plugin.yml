@@ -45,3 +45,6 @@ permissions:
     ${artifactId}.use:
         description: Reloads the plugin.
         default: true
+    ${artifactId}.banned-commands-exempt:
+        description: Players with this permission can use banned commands as defined in config.yml
+        default: none

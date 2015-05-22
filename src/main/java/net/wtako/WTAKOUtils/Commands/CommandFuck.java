@@ -1,13 +1,12 @@
 package net.wtako.WTAKOUtils.Commands;
 
-import java.lang.reflect.InvocationTargetException;
-
 import net.wtako.WTAKOUtils.Utils.CommandsFuck;
 import net.wtako.WTAKOUtils.Utils.Lang;
-
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+
+import java.lang.reflect.InvocationTargetException;
 
 public class CommandFuck implements CommandExecutor {
 

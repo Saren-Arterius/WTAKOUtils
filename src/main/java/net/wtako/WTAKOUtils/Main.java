@@ -1,10 +1,5 @@
 package net.wtako.WTAKOUtils;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import net.wtako.WTAKOUtils.Commands.CommandFuck;
 import net.wtako.WTAKOUtils.Commands.CommandMulti;
 import net.wtako.WTAKOUtils.Commands.CommandTimeout;
@@ -14,19 +9,26 @@ import net.wtako.WTAKOUtils.EventHandlers.LavaListener;
 import net.wtako.WTAKOUtils.EventHandlers.PistonListener;
 import net.wtako.WTAKOUtils.Utils.Config;
 import net.wtako.WTAKOUtils.Utils.Lang;
-
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import de.schlichtherle.io.File;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public final class Main extends JavaPlugin {
 
-    private static Main             instance;
-    public static String            artifactId;
+    public static String artifactId;
     public static YamlConfiguration LANG;
-    public static File              LANG_FILE;
-    public static Logger            log = Logger.getLogger("WTAKOUtils");
+    public static File LANG_FILE;
+    public static Logger log = Logger.getLogger("WTAKOUtils");
+    private static Main instance;
+
+    public static Main getInstance() {
+        return Main.instance;
+    }
 
     @Override
     public void onEnable() {
@@ -43,6 +45,7 @@ public final class Main extends JavaPlugin {
         loadLang();
     }
 
+    @SuppressWarnings("deprecation")
     public void loadLang() {
         final File lang = new File(getDataFolder(), "messages.yml");
         if (!lang.exists()) {
@@ -65,7 +68,7 @@ public final class Main extends JavaPlugin {
             }
         }
         final YamlConfiguration conf = YamlConfiguration.loadConfiguration(lang);
-        for (final Lang item: Lang.values()) {
+        for (final Lang item : Lang.values()) {
             if (conf.getString(item.getPath()) == null) {
                 conf.set(item.getPath(), item.getDefault());
             }
@@ -85,7 +88,7 @@ public final class Main extends JavaPlugin {
 
     /**
      * Gets the messages.yml config.
-     * 
+     *
      * @return The messages.yml config.
      */
     public YamlConfiguration getLang() {
@@ -94,20 +97,17 @@ public final class Main extends JavaPlugin {
 
     /**
      * Get the messages.yml file.
-     * 
+     *
      * @return The messages.yml file.
      */
     public File getLangFile() {
         return Main.LANG_FILE;
     }
 
+    @SuppressWarnings("deprecation")
     public String getProperty(String key) {
         final YamlConfiguration spawnConfig = YamlConfiguration.loadConfiguration(getResource("plugin.yml"));
         return spawnConfig.getString(key);
-    }
-
-    public static Main getInstance() {
-        return Main.instance;
     }
 
 }

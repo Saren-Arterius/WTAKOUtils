@@ -2,7 +2,6 @@ package net.wtako.WTAKOUtils.Commands.Multi;
 
 import net.wtako.WTAKOUtils.Main;
 import net.wtako.WTAKOUtils.Utils.Lang;
-
 import org.bukkit.command.CommandSender;
 
 public class MainCommand {
@@ -22,7 +21,7 @@ public class MainCommand {
             }
         }
 
-        for (final String command: origCommand.split("; *")) {
+        for (final String command : origCommand.split("; *")) {
             if (command.length() == 0 || command.equalsIgnoreCase(" ")) {
                 continue;
             }

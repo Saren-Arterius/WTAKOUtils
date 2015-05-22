@@ -1,30 +1,28 @@
 package net.wtako.WTAKOUtils.EventHandlers;
 
+import net.wtako.WTAKOUtils.Main;
 import net.wtako.WTAKOUtils.Utils.Config;
-
+import net.wtako.WTAKOUtils.Utils.Lang;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 
+import java.text.MessageFormat;
+
 public class CommandListener implements Listener {
 
     @EventHandler
-    public void onAccSay(PlayerCommandPreprocessEvent event) {
-        if (!Config.BAN_ACC_SAY.getBoolean()) {
+    public void onCommandCalled(PlayerCommandPreprocessEvent event) {
+        if (event.getPlayer().hasPermission(Main.artifactId + ".banned-commands-exempt")) {
             return;
         }
-        final String[] args = event.getMessage().split(" ");
-        if (args.length < 2) {
-            return;
-        }
-        final String name = event.getPlayer().getName().toLowerCase();
-        if (name.contains("saren_hk") || name.contains("koyin")) {
-            return;
-        }
-        if ((args[0].equalsIgnoreCase("/acc") || args[0].equalsIgnoreCase("/announcer"))
-                && args[1].equalsIgnoreCase("say")) {
-            event.setCancelled(true);
-            event.getPlayer().sendMessage("Please no.");
+        try {
+            String playerCommand = event.getMessage().split(" ")[0].substring(1);
+            Config.BANNED_COMMANDS.getStrings().stream().filter(bannedCommand -> bannedCommand.equalsIgnoreCase(playerCommand)).forEach(bannedCommand -> {
+                event.setCancelled(true);
+                event.getPlayer().sendMessage(Lang.TITLE.toString() + MessageFormat.format(Lang.COMMAND_BANNED.toString(), playerCommand));
+            });
+        } catch (Exception ignored) {
         }
     }
 }

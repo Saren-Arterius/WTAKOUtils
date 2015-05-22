@@ -1,14 +1,13 @@
 package net.wtako.WTAKOUtils.Utils;
 
+import net.wtako.WTAKOUtils.Main;
+import org.bukkit.command.CommandSender;
+import org.bukkit.scheduler.BukkitRunnable;
+
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
-
-import net.wtako.WTAKOUtils.Main;
-
-import org.bukkit.command.CommandSender;
-import org.bukkit.scheduler.BukkitRunnable;
 
 public class CommandHelper {
 
@@ -17,19 +16,19 @@ public class CommandHelper {
 
             @Override
             public void run() {
-                final ArrayList<String> messages = new ArrayList<String>();
+                final ArrayList<String> messages = new ArrayList<>();
                 messages.add(Main.getInstance().getName() + " v" + Main.getInstance().getProperty("version"));
                 messages.add("Author: " + Main.getInstance().getProperty("author"));
                 if (!commandName.equalsIgnoreCase("")) {
                     messages.add(MessageFormat.format(Lang.SUB_COMMAND.toString(), commandName));
                 }
-                final HashMap<String, ArrayList<String>> commandHelps = new HashMap<String, ArrayList<String>>();
-                for (final BaseCommands command: commandValues) {
+                final HashMap<String, ArrayList<String>> commandHelps = new HashMap<>();
+                for (final BaseCommands command : commandValues) {
                     if (command.name().equalsIgnoreCase("MAIN_COMMAND")) {
                         continue;
                     }
                     boolean hasHelpMessage = false;
-                    for (final Entry<String, ArrayList<String>> entry: commandHelps.entrySet()) {
+                    for (final Entry<String, ArrayList<String>> entry : commandHelps.entrySet()) {
                         if (entry.getKey().equalsIgnoreCase(command.getHelpMessage())) {
                             entry.getValue().add(command.name().toLowerCase().replace("_", "-"));
                             hasHelpMessage = true;
@@ -42,10 +41,10 @@ public class CommandHelper {
                         commandHelps.put(command.getHelpMessage(), commandList);
                     }
                 }
-                for (final Entry<String, ArrayList<String>> entry: commandHelps.entrySet()) {
+                for (final Entry<String, ArrayList<String>> entry : commandHelps.entrySet()) {
                     String displayCommands = "";
                     int counter = 0;
-                    for (final String displayCommand: entry.getValue()) {
+                    for (final String displayCommand : entry.getValue()) {
                         displayCommands += displayCommand;
                         counter++;
                         if (counter < entry.getValue().size()) {
@@ -53,7 +52,7 @@ public class CommandHelper {
                         }
                     }
                     String permissionString = "";
-                    for (final BaseCommands command: commandValues) {
+                    for (final BaseCommands command : commandValues) {
                         if (command.getHelpMessage().equalsIgnoreCase(entry.getKey())
                                 && !sender.hasPermission(command.getRequiredPermission())) {
                             permissionString = Lang.NO_PERMISSION_HELP.toString();

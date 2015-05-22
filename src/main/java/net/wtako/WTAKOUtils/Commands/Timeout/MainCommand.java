@@ -3,7 +3,6 @@ package net.wtako.WTAKOUtils.Commands.Timeout;
 import net.wtako.WTAKOUtils.Main;
 import net.wtako.WTAKOUtils.Utils.Config;
 import net.wtako.WTAKOUtils.Utils.Lang;
-
 import org.bukkit.command.CommandSender;
 import org.bukkit.scheduler.BukkitRunnable;
 

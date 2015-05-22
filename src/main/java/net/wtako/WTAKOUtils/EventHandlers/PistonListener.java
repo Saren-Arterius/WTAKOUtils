@@ -1,7 +1,6 @@
 package net.wtako.WTAKOUtils.EventHandlers;
 
 import net.wtako.WTAKOUtils.Utils.Config;
-
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.event.EventHandler;
@@ -16,7 +15,7 @@ public class PistonListener implements Listener {
         if (!Config.PREVENT_RAIL_DUPLICATE.getBoolean()) {
             return;
         }
-        for (final Block block: event.getBlocks()) {
+        for (final Block block : event.getBlocks()) {
             if (block.getType() == Material.RAILS || block.getType() == Material.POWERED_RAIL
                     || block.getType() == Material.DETECTOR_RAIL) {
                 event.setCancelled(true);

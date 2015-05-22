@@ -1,13 +1,12 @@
 package net.wtako.WTAKOUtils.Commands.Fuck;
 
-import java.text.MessageFormat;
-
 import net.wtako.WTAKOUtils.Main;
 import net.wtako.WTAKOUtils.Utils.Config;
 import net.wtako.WTAKOUtils.Utils.Lang;
-
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+
+import java.text.MessageFormat;
 
 public class MainCommand {
 
@@ -25,7 +24,7 @@ public class MainCommand {
             return;
         }
 
-        if (sender instanceof Player && ((Player) sender == target)) {
+        if (sender instanceof Player && (sender == target)) {
             sender.sendMessage(Lang.SELF_FUCK.toString());
             return;
         }
@@ -38,7 +37,8 @@ public class MainCommand {
                 power = Integer.parseInt(args[1]);
                 power = power > Config.FUCK_MAX_POWER.getInt() ? Config.FUCK_MAX_POWER.getInt() : power;
                 power = power < 1 ? 1 : power;
-            } catch (final NumberFormatException e) {}
+            } catch (final NumberFormatException ignored) {
+            }
         }
 
         if (args.length > 2) {
@@ -46,7 +46,8 @@ public class MainCommand {
                 times = Integer.parseInt(args[2]);
                 times = times > Config.FUCK_MAX_TIMES.getInt() ? Config.FUCK_MAX_TIMES.getInt() : times;
                 times = times < 1 ? 1 : times;
-            } catch (final NumberFormatException e) {}
+            } catch (final NumberFormatException ignored) {
+            }
         }
 
         for (int i = 0; i < times; i++) {

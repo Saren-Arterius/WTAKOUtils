@@ -1,22 +1,21 @@
 package net.wtako.WTAKOUtils.Commands.Wut;
 
-import java.text.MessageFormat;
-import java.util.LinkedList;
-import java.util.Random;
-
 import net.wtako.WTAKOUtils.Main;
 import net.wtako.WTAKOUtils.Utils.Lang;
-
 import org.bukkit.World;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 
+import java.text.MessageFormat;
+import java.util.LinkedList;
+import java.util.Random;
+
 public class ArgRandomlyReduceEntity {
 
     public ArgRandomlyReduceEntity(CommandSender sender, String[] args) {
         if (args.length < 4) {
-            sender.sendMessage(Lang.HELP_RRE.toString());
+            sender.sendMessage(MessageFormat.format(Lang.HELP_RRE.toString(), args[1]));
             return;
         }
 
@@ -25,7 +24,7 @@ public class ArgRandomlyReduceEntity {
             final int parseProb = Integer.parseInt(args[3]);
             reduceProb = parseProb > 100 ? 100 : parseProb < 0 ? 0 : parseProb;
         } catch (final Exception e) {
-            sender.sendMessage(Lang.HELP_RRE.toString());
+            sender.sendMessage(MessageFormat.format(Lang.HELP_RRE.toString(), args[1]));
             return;
         }
 
@@ -43,10 +42,10 @@ public class ArgRandomlyReduceEntity {
             return;
         }
 
-        final LinkedList<Entity> removingEntities = new LinkedList<Entity>();
+        final LinkedList<Entity> removingEntities = new LinkedList<>();
         int entityCount = 0;
         final Random rand = new Random();
-        for (final Entity entity: world.getEntities()) {
+        for (final Entity entity : world.getEntities()) {
             if (entityType != null && entity.getType() != entityType) {
                 continue;
             }
@@ -56,11 +55,11 @@ public class ArgRandomlyReduceEntity {
             }
         }
         final int removedEntityCount = removingEntities.size();
-        for (final Entity entity: removingEntities) {
-            entity.remove();
+        removingEntities.forEach(org.bukkit.entity.Entity::remove);
+        if (entityType != null) {
+            sender.sendMessage(MessageFormat.format(Lang.RRE_REMOVED.toString(), removedEntityCount, entityType.name(),
+                    entityCount, world.getName(), reduceProb));
         }
-        sender.sendMessage(MessageFormat.format(Lang.RRE_REMOVED.toString(), removedEntityCount, entityType.name(),
-                entityCount, world.getName(), reduceProb));
     }
 
 }

@@ -1,13 +1,12 @@
 package net.wtako.WTAKOUtils.Commands;
 
-import java.lang.reflect.InvocationTargetException;
-
 import net.wtako.WTAKOUtils.Utils.CommandsMulti;
 import net.wtako.WTAKOUtils.Utils.Lang;
-
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+
+import java.lang.reflect.InvocationTargetException;
 
 public class CommandMulti implements CommandExecutor {
 
@@ -25,7 +24,7 @@ public class CommandMulti implements CommandExecutor {
                 return true;
             }
             targetCommand.getTargetClass().getDeclaredConstructor(CommandSender.class, String[].class)
-            .newInstance(sender, args);
+                    .newInstance(sender, args);
             return true;
         } catch (final IllegalArgumentException | InstantiationException | IllegalAccessException
                 | InvocationTargetException | NoSuchMethodException | SecurityException e) {

@@ -1,17 +1,17 @@
 package net.wtako.WTAKOUtils.Utils;
 
-import net.wtako.WTAKOUtils.Main;
 import net.wtako.WTAKOUtils.Commands.Multi.MainCommand;
+import net.wtako.WTAKOUtils.Main;
 
 public enum CommandsMulti implements BaseCommands {
 
     MAIN_COMMAND(Lang.HELP_MULTI.toString(), MainCommand.class, Main.artifactId + ".admin");
 
-    private String   helpMessage;
+    private String helpMessage;
     private Class<?> targetClass;
-    private String   permission;
+    private String permission;
 
-    private CommandsMulti(String helpMessage, Class<?> targetClass, String permission) {
+    CommandsMulti(String helpMessage, Class<?> targetClass, String permission) {
         this.helpMessage = helpMessage;
         this.targetClass = targetClass;
         this.permission = permission;

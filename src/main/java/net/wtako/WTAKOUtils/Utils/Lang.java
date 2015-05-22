@@ -1,13 +1,12 @@
 package net.wtako.WTAKOUtils.Utils;
 
 import net.wtako.WTAKOUtils.Main;
-
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 /**
  * An enum for requesting strings from the language file.
- * 
+ *
  * @author gomeow
  */
 public enum Lang {
@@ -30,6 +29,7 @@ public enum Lang {
     PRINT_FORMAT("{0}. {1}: {2}"),
     COMMAND_HELP_SEPERATOR("&6 | &a"),
     COMMAND_ARG_IN_USE("&e{0}&a"),
+    COMMAND_BANNED("&cThis command (&f{0}&c) is banned."),
     SUB_COMMAND("Sub-command: &e{0}"),
     HELP_COUNT_ENTITY("Type &b/" + Main.getInstance().getProperty("mainCommand")
             + " &a{0}&f <EntityType = all> <WorldName = yours> <ListItems = 10>&f "
@@ -48,17 +48,14 @@ public enum Lang {
     PLUGIN_RELOADED("&aPlugin reloaded."),
     NO_PERMISSION_COMMAND("&cYou are not allowed to use this command.");
 
-    private String                   path;
-    private String                   def;
     private static YamlConfiguration LANG;
+    private String path;
+    private String def;
 
     /**
      * Lang enum constructor.
-     * 
-     * @param path
-     *            The string path.
-     * @param start
-     *            The default string.
+     *
+     * @param start The default string.
      */
     Lang(String start) {
         path = name().toLowerCase().replace("_", "-");
@@ -67,9 +64,8 @@ public enum Lang {
 
     /**
      * Set the {@code YamlConfiguration} to use.
-     * 
-     * @param config
-     *            The config to set.
+     *
+     * @param config The config to set.
      */
     public static void setFile(YamlConfiguration config) {
         Lang.LANG = config;
@@ -85,7 +81,7 @@ public enum Lang {
 
     /**
      * Get the default value of the path.
-     * 
+     *
      * @return The default value of the path.
      */
     public String getDefault() {
@@ -94,7 +90,7 @@ public enum Lang {
 
     /**
      * Get the path to the string.
-     * 
+     *
      * @return The path to the string.
      */
     public String getPath() {
