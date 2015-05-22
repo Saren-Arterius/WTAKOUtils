@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="wtakoutils" default="all">
+  
+  
+  <property file="wtakoutils.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="700m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/*.rbc/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.bundle/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/RCS/**"/>
+    <exclude name="**/SCCS/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/.tox/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/rcs/**"/>
+    <exclude name="**/vssver.scc/**"/>
+    <exclude name="**/vssver2.scc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.zip"/>
+    <include name="*.apk"/>
+    <include name="*.war"/>
+    <include name="*.egg"/>
+    <include name="*.ear"/>
+    <include name="*.ane"/>
+    <include name="*.swc"/>
+    <include name="*.jar"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <exclude name="**/?*.java"/>
+    <exclude name="**/?*.form"/>
+    <exclude name="**/?*.class"/>
+    <exclude name="**/?*.groovy"/>
+    <exclude name="**/?*.scala"/>
+    <exclude name="**/?*.flex"/>
+    <exclude name="**/?*.kt"/>
+    <exclude name="**/?*.clj"/>
+    <exclude name="**/?*.aj"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.intellij_idea_community_edition_ic-141.1010.3" value="${jdk.home.intellij_idea_community_edition_ic-141.1010.3}/../../lib/jvm/java-8-openjdk/bin"/>
+  <path id="jdk.classpath.intellij_idea_community_edition_ic-141.1010.3">
+    <fileset dir="${jdk.home.intellij_idea_community_edition_ic-141.1010.3}">
+      <include name="../../lib/jvm/default/jre/lib/rt.jar"/>
+      <include name="../../lib/jvm/default/jre/lib/jsse.jar"/>
+      <include name="../../lib/jvm/default/jre/lib/resources.jar"/>
+      <include name="../../lib/jvm/default/jre/lib/jce.jar"/>
+      <include name="../../lib/jvm/default/jre/lib/management-agent.jar"/>
+      <include name="../../lib/jvm/default/jre/lib/charsets.jar"/>
+      <include name="../../lib/jvm/default/jre/lib/ext/sunpkcs11.jar"/>
+      <include name="../../lib/jvm/default/jre/lib/ext/zipfs.jar"/>
+      <include name="../../lib/jvm/default/jre/lib/ext/sunec.jar"/>
+      <include name="../../lib/jvm/default/jre/lib/ext/sunjce_provider.jar"/>
+      <include name="../../lib/jvm/default/jre/lib/ext/localedata.jar"/>
+      <include name="../../lib/jvm/default/jre/lib/ext/nashorn.jar"/>
+      <include name="../../lib/jvm/default/jre/lib/ext/cldrdata.jar"/>
+      <include name="../../lib/jvm/default/jre/lib/ext/dnsns.jar"/>
+      <include name="lib/jgoodies-forms.jar"/>
+      <include name="lib/slf4j-log4j12-1.7.10.jar"/>
+      <include name="lib/hamcrest-library-1.3.jar"/>
+      <include name="lib/jps-model.jar"/>
+      <include name="lib/jdkAnnotations.jar"/>
+      <include name="lib/markdown4j-2.2.jar"/>
+      <include name="lib/protobuf-2.5.0.jar"/>
+      <include name="lib/trove4j_src.jar"/>
+      <include name="lib/commons-logging-1.1.3.jar"/>
+      <include name="lib/jps-server.jar"/>
+      <include name="lib/rngom-20051226-patched.jar"/>
+      <include name="lib/idea_rt.jar"/>
+      <include name="lib/jcip-annotations.jar"/>
+      <include name="lib/guava-17.0.jar"/>
+      <include name="lib/jaxen-1.1.3.jar"/>
+      <include name="lib/jgoodies-looks-2.4.2.jar"/>
+      <include name="lib/boot.jar"/>
+      <include name="lib/purejavacomm.jar"/>
+      <include name="lib/proxy-vole_20131209.jar"/>
+      <include name="lib/isorelax.jar"/>
+      <include name="lib/microba.jar"/>
+      <include name="lib/resources.jar"/>
+      <include name="lib/hamcrest-core-1.3.jar"/>
+      <include name="lib/jsch.agentproxy.pageant.jar"/>
+      <include name="lib/slf4j-api-1.7.10.jar"/>
+      <include name="lib/xbean.jar"/>
+      <include name="lib/sanselan-0.98-snapshot.jar"/>
+      <include name="lib/openapi.jar"/>
+      <include name="lib/httpclient-4.3.6.jar"/>
+      <include name="lib/jsch.agentproxy.connector-factory.jar"/>
+      <include name="lib/automaton.jar"/>
+      <include name="lib/annotations.jar"/>
+      <include name="lib/resolver.jar"/>
+      <include name="lib/asm-all.jar"/>
+      <include name="lib/nanoxml-2.2.3.jar"/>
+      <include name="lib/freemarker.jar"/>
+      <include name="lib/snappy-in-java-0.3.1.jar"/>
+      <include name="lib/xstream-1.4.3.jar"/>
+      <include name="lib/jsch.agentproxy.core.jar"/>
+      <include name="lib/util.jar"/>
+      <include name="lib/jzlib-1.1.1.jar"/>
+      <include name="lib/gson-2.3.jar"/>
+      <include name="lib/jsch.agentproxy.usocket-jna.jar"/>
+      <include name="lib/jna.jar"/>
+      <include name="lib/jayatana-1.2.4.jar"/>
+      <include name="lib/xmlrpc-2.0.jar"/>
+      <include name="lib/bootstrap.jar"/>
+      <include name="lib/fluent-hc-4.3.6.jar"/>
+      <include name="lib/rhino-js-1_7R4.jar"/>
+      <include name="lib/miglayout-swing.jar"/>
+      <include name="lib/jna-utils.jar"/>
+      <include name="lib/velocity.jar"/>
+      <include name="lib/xpp3-1.1.4-min.jar"/>
+      <include name="lib/idea.jar"/>
+      <include name="lib/cli-parser-1.1.jar"/>
+      <include name="lib/winp-1.21-patched.jar"/>
+      <include name="lib/jgoodies-common-1.2.1.jar"/>
+      <include name="lib/swingx-core-1.6.2.jar"/>
+      <include name="lib/serviceMessages.jar"/>
+      <include name="lib/forms_rt.jar"/>
+      <include name="lib/log4j.jar"/>
+      <include name="lib/groovy-all-2.3.9.jar"/>
+      <include name="lib/jing.jar"/>
+      <include name="lib/jps-launcher.jar"/>
+      <include name="lib/asm4-all.jar"/>
+      <include name="lib/resources_en.jar"/>
+      <include name="lib/netty-all-4.1.0.Beta4.jar"/>
+      <include name="lib/markdownj-core-0.4.2-SNAPSHOT.jar"/>
+      <include name="lib/ecj-4.4.jar"/>
+      <include name="lib/jdom.jar"/>
+      <include name="lib/extensions.jar"/>
+      <include name="lib/trove4j.jar"/>
+      <include name="lib/jh.jar"/>
+      <include name="lib/jsch-0.1.51.jar"/>
+      <include name="lib/jsch.agentproxy.usocket-nc.jar"/>
+      <include name="lib/trang-core.jar"/>
+      <include name="lib/pty4j-0.4.15.jar"/>
+      <include name="lib/icons.jar"/>
+      <include name="lib/optimizedFileManager.jar"/>
+      <include name="lib/commons-codec-1.8.jar"/>
+      <include name="lib/asm.jar"/>
+      <include name="lib/asm-commons.jar"/>
+      <include name="lib/junit-4.11.jar"/>
+      <include name="lib/httpcore-4.3.3.jar"/>
+      <include name="lib/cglib-2.2.2.jar"/>
+      <include name="lib/jsr166e.jar"/>
+      <include name="lib/nekohtml-1.9.14.jar"/>
+      <include name="lib/xerces.jar"/>
+      <include name="lib/javac2.jar"/>
+      <include name="lib/httpmime-4.3.6.jar"/>
+      <include name="lib/jsch.agentproxy.sshagent.jar"/>
+      <include name="lib/picocontainer.jar"/>
+      <include name="lib/jsr173_1.0_api.jar"/>
+      <include name="lib/commons-httpclient-3.1-patched.jar"/>
+      <include name="lib/commons-net-3.3.jar"/>
+      <include name="lib/oromatcher.jar"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.intellij_idea_community_edition_ic-141.1010.3}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.intellij_idea_community_edition_ic-141.1010.3}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.intellij_idea_community_edition_ic-141.1010.3"/>
+  
+  
+  <!-- Project Libraries -->
+  
+  <path id="library.maven:_com.google.code.findbugs:jsr305:1.3.9.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/google/code/findbugs/jsr305/1.3.9/jsr305-1.3.9.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.google.guava:guava:10.0.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/google/guava/guava/10.0.1/guava-10.0.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.sk89q:commandbook:2.3.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/sk89q/commandbook/2.3/commandbook-2.3.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.sk89q:worldedit:6.0.0-snapshot.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/sk89q/worldedit/6.0.0-SNAPSHOT/worldedit-6.0.0-20141031.013123-13.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.sk89q:worldguard:6.0.0-beta-01.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/sk89q/worldguard/6.0.0-beta-01/worldguard-6.0.0-beta-01.jar"/>
+  </path>
+  
+  <path id="library.maven:_de.schlichtherle:truezip:6.8.3.classpath">
+    <pathelement location="${path.variable.maven_repository}/de/schlichtherle/truezip/6.8.3/truezip-6.8.3.jar"/>
+  </path>
+  
+  <path id="library.maven:_net.sf.opencsv:opencsv:2.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/net/sf/opencsv/opencsv/2.0/opencsv-2.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.bukkit:bukkit:1.7.10-r0.1-snapshot.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/bukkit/bukkit/1.7.10-R0.1-SNAPSHOT/bukkit-1.7.10-R0.1-20140817.175650-8.jar"/>
+  </path>
+  
+  <path id="library.maven:_rhino:js:1.7r2.classpath">
+    <pathelement location="${path.variable.maven_repository}/rhino/js/1.7R2/js-1.7R2.jar"/>
+  </path>
+  <!-- Register Custom Compiler Taskdefs -->
+  <property name="javac2.home" value="${idea.home}/lib"/>
+  <path id="javac2.classpath">
+    <pathelement location="${javac2.home}/javac2.jar"/>
+    <pathelement location="${javac2.home}/jdom.jar"/>
+    <pathelement location="${javac2.home}/asm-all.jar"/>
+    <pathelement location="${javac2.home}/jgoodies-forms.jar"/>
+  </path>
+  <target name="register.custom.compilers">
+    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
+    <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions" classpathref="javac2.classpath"/>
+  </target>
+  
+  <!-- Modules -->
+  
+  
+  <!-- Module WTAKOUtils -->
+  
+  <dirname property="module.wtakoutils.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.wtakoutils" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.wtakoutils" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.wtakoutils" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.wtakoutils" value="-encoding UTF-8 -source 8 -target 1.8 ${compiler.args}"/>
+  
+  <property name="wtakoutils.output.dir" value="${module.wtakoutils.basedir}/../../../../../../home/saren/Documents/Dropbox/GitHub/WTAKO-Utils/target/classes"/>
+  <property name="wtakoutils.testoutput.dir" value="${module.wtakoutils.basedir}/../../../../../../home/saren/Documents/Dropbox/GitHub/WTAKO-Utils/target/test-classes"/>
+  
+  <path id="wtakoutils.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="wtakoutils.module.production.classpath">
+    <path refid="${module.jdk.classpath.wtakoutils}"/>
+    <path refid="library.maven:_org.bukkit:bukkit:1.7.10-r0.1-snapshot.classpath"/>
+    <path refid="library.maven:_com.sk89q:worldguard:6.0.0-beta-01.classpath"/>
+    <path refid="library.maven:_com.sk89q:commandbook:2.3.classpath"/>
+    <path refid="library.maven:_net.sf.opencsv:opencsv:2.0.classpath"/>
+    <path refid="library.maven:_com.google.guava:guava:10.0.1.classpath"/>
+    <path refid="library.maven:_com.google.code.findbugs:jsr305:1.3.9.classpath"/>
+    <path refid="library.maven:_com.sk89q:worldedit:6.0.0-snapshot.classpath"/>
+    <path refid="library.maven:_de.schlichtherle:truezip:6.8.3.classpath"/>
+    <path refid="library.maven:_rhino:js:1.7r2.classpath"/>
+  </path>
+  
+  <path id="wtakoutils.runtime.production.module.classpath">
+    <pathelement location="${wtakoutils.output.dir}"/>
+    <path refid="library.maven:_org.bukkit:bukkit:1.7.10-r0.1-snapshot.classpath"/>
+    <path refid="library.maven:_com.sk89q:worldguard:6.0.0-beta-01.classpath"/>
+    <path refid="library.maven:_com.sk89q:commandbook:2.3.classpath"/>
+    <path refid="library.maven:_net.sf.opencsv:opencsv:2.0.classpath"/>
+    <path refid="library.maven:_com.google.guava:guava:10.0.1.classpath"/>
+    <path refid="library.maven:_com.google.code.findbugs:jsr305:1.3.9.classpath"/>
+    <path refid="library.maven:_com.sk89q:worldedit:6.0.0-snapshot.classpath"/>
+    <path refid="library.maven:_de.schlichtherle:truezip:6.8.3.classpath"/>
+    <path refid="library.maven:_rhino:js:1.7r2.classpath"/>
+  </path>
+  
+  <path id="wtakoutils.module.classpath">
+    <path refid="${module.jdk.classpath.wtakoutils}"/>
+    <pathelement location="${wtakoutils.output.dir}"/>
+    <path refid="library.maven:_org.bukkit:bukkit:1.7.10-r0.1-snapshot.classpath"/>
+    <path refid="library.maven:_com.sk89q:worldguard:6.0.0-beta-01.classpath"/>
+    <path refid="library.maven:_com.sk89q:commandbook:2.3.classpath"/>
+    <path refid="library.maven:_net.sf.opencsv:opencsv:2.0.classpath"/>
+    <path refid="library.maven:_com.google.guava:guava:10.0.1.classpath"/>
+    <path refid="library.maven:_com.google.code.findbugs:jsr305:1.3.9.classpath"/>
+    <path refid="library.maven:_com.sk89q:worldedit:6.0.0-snapshot.classpath"/>
+    <path refid="library.maven:_de.schlichtherle:truezip:6.8.3.classpath"/>
+    <path refid="library.maven:_rhino:js:1.7r2.classpath"/>
+  </path>
+  
+  <path id="wtakoutils.runtime.module.classpath">
+    <pathelement location="${wtakoutils.testoutput.dir}"/>
+    <pathelement location="${wtakoutils.output.dir}"/>
+    <path refid="library.maven:_org.bukkit:bukkit:1.7.10-r0.1-snapshot.classpath"/>
+    <path refid="library.maven:_com.sk89q:worldguard:6.0.0-beta-01.classpath"/>
+    <path refid="library.maven:_com.sk89q:commandbook:2.3.classpath"/>
+    <path refid="library.maven:_net.sf.opencsv:opencsv:2.0.classpath"/>
+    <path refid="library.maven:_com.google.guava:guava:10.0.1.classpath"/>
+    <path refid="library.maven:_com.google.code.findbugs:jsr305:1.3.9.classpath"/>
+    <path refid="library.maven:_com.sk89q:worldedit:6.0.0-snapshot.classpath"/>
+    <path refid="library.maven:_de.schlichtherle:truezip:6.8.3.classpath"/>
+    <path refid="library.maven:_rhino:js:1.7r2.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.wtakoutils">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.wtakoutils">
+    <patternset refid="excluded.from.module.wtakoutils"/>
+  </patternset>
+  
+  <path id="wtakoutils.module.sourcepath">
+    <dirset dir="${module.wtakoutils.basedir}/../../../../../../home/saren/Documents/Dropbox/GitHub/WTAKO-Utils">
+      <include name="src/main/java"/>
+      <include name="src/main/resources"/>
+    </dirset>
+  </path>
+  
+  <path id="wtakoutils.module.test.sourcepath">
+    <dirset dir="${module.wtakoutils.basedir}/../../../../../../home/saren/Documents/Dropbox/GitHub/WTAKO-Utils">
+      <include name="src/test/java"/>
+      <include name="src/test/resources"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.wtakoutils" depends="compile.module.wtakoutils.production,compile.module.wtakoutils.tests" description="Compile module WTAKOUtils"/>
+  
+  <target name="compile.module.wtakoutils.production" depends="register.custom.compilers" description="Compile module WTAKOUtils; production classes">
+    <mkdir dir="${wtakoutils.output.dir}"/>
+    <javac2 destdir="${wtakoutils.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.wtakoutils}/javac">
+      <compilerarg line="${compiler.args.wtakoutils}"/>
+      <bootclasspath refid="wtakoutils.module.bootclasspath"/>
+      <classpath refid="wtakoutils.module.production.classpath"/>
+      <src refid="wtakoutils.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.wtakoutils"/>
+    </javac2>
+    
+    <copy todir="${wtakoutils.output.dir}">
+      <fileset dir="${module.wtakoutils.basedir}/../../../../../../home/saren/Documents/Dropbox/GitHub/WTAKO-Utils/src/main/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.wtakoutils.basedir}/../../../../../../home/saren/Documents/Dropbox/GitHub/WTAKO-Utils/src/main/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.wtakoutils.tests" depends="register.custom.compilers,compile.module.wtakoutils.production" description="compile module WTAKOUtils; test classes" unless="skip.tests">
+    <mkdir dir="${wtakoutils.testoutput.dir}"/>
+    <javac2 destdir="${wtakoutils.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.wtakoutils}/javac">
+      <compilerarg line="${compiler.args.wtakoutils}"/>
+      <bootclasspath refid="wtakoutils.module.bootclasspath"/>
+      <classpath refid="wtakoutils.module.classpath"/>
+      <src refid="wtakoutils.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.wtakoutils"/>
+    </javac2>
+    
+    <copy todir="${wtakoutils.testoutput.dir}">
+      <fileset dir="${module.wtakoutils.basedir}/../../../../../../home/saren/Documents/Dropbox/GitHub/WTAKO-Utils/src/test/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.wtakoutils.basedir}/../../../../../../home/saren/Documents/Dropbox/GitHub/WTAKO-Utils/src/test/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.wtakoutils" description="cleanup module">
+    <delete dir="${wtakoutils.output.dir}"/>
+    <delete dir="${wtakoutils.testoutput.dir}"/>
+  </target>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.wtakoutils" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.wtakoutils" description="build all modules"/>
+  
+  <target name="all" depends="build.modules" description="build all"/>
+</project>

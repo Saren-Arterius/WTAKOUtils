@@ -31,9 +31,6 @@ commands:
         permission-message: You are not permitted to use this command.
 
 permissions:
-    ${artifactId}.*:
-        description: Gives access to all ${name} commands.
-        default: op
     ${artifactId}.admin:
         description: Gives access to all ${name} administrative commands.
         children:
@@ -43,8 +40,8 @@ permissions:
         description: Reloads the plugin.
         default: op
     ${artifactId}.use:
-        description: Reloads the plugin.
+        description: Use this plugin.
         default: true
     ${artifactId}.banned-commands-exempt:
         description: Players with this permission can use banned commands as defined in config.yml
-        default: none
+        default: false
