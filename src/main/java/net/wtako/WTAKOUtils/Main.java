@@ -5,7 +5,6 @@ import net.wtako.WTAKOUtils.Commands.CommandMulti;
 import net.wtako.WTAKOUtils.Commands.CommandTimeout;
 import net.wtako.WTAKOUtils.Commands.CommandWut;
 import net.wtako.WTAKOUtils.EventHandlers.CommandListener;
-import net.wtako.WTAKOUtils.EventHandlers.LavaListener;
 import net.wtako.WTAKOUtils.EventHandlers.PistonListener;
 import net.wtako.WTAKOUtils.Utils.Config;
 import net.wtako.WTAKOUtils.Utils.Lang;
@@ -38,9 +37,8 @@ public final class Main extends JavaPlugin {
         getCommand("fuck").setExecutor(new CommandFuck());
         getCommand("timeout").setExecutor(new CommandTimeout());
         getCommand("multi").setExecutor(new CommandMulti());
-        getServer().getPluginManager().registerEvents(new PistonListener(), this);
-        getServer().getPluginManager().registerEvents(new LavaListener(), this);
         getServer().getPluginManager().registerEvents(new CommandListener(), this);
+        getServer().getPluginManager().registerEvents(new PistonListener(), this);
         Config.saveAll();
         loadLang();
     }

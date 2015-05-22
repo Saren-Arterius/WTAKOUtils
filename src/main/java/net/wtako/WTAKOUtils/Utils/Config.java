@@ -3,16 +3,13 @@ package net.wtako.WTAKOUtils.Utils;
 import net.wtako.WTAKOUtils.Main;
 import org.bukkit.configuration.file.FileConfiguration;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public enum Config {
 
     PREVENT_RAIL_DUPLICATE("bug-fix.prevent-rail-duplicate", true),
-    FIX_WORLDGUARD_LAVA("bug-fix.fix-worldguard-lava", true),
     BANNED_COMMANDS("banned-commands.commands", Arrays.asList("testban", "dangercommand")),
-    BANNED_COMMANDS_EXEMPTS("banned-commands.exempt-players", new ArrayList<String>()),
     FUCK_MAX_POWER("fuck.max-power", 20),
     FUCK_MAX_TIMES("fuck.max-times", 300),
     TIMEOUT_MAX_TICKS("timeout.max-ticks", 1200);
